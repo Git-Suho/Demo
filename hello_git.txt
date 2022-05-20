@@ -30,6 +30,21 @@ git merge 分支名 : 把指定分支合并到当前分支上
 远程仓库操作
 git remote -v : 查看当前所有远程地址的别名
 git remote add 别名 远程地址 : 给远程地址起别名
-git push 别名 分支 : 推送本地分支上的内容到远程仓库
+git push 别名 分支名 : 推送本地分支上的内容到远程仓库
 git clone 远程地址 : 将远程仓库的内容克隆到本地
+    clone 会做如下操作。1、拉取代码。2、初始化本地仓库。3、创建别名（origin）
 git pull 别名/远程地址 远程分支名 : 将远程仓库对于分支最新内容拉下来后与当前本地分支直接合并
+
+
+SSH免密登录相关操作
+--进入当前用户的家目录
+$ cd
+--删除.ssh 目录
+$ rm -rvf .ssh
+--运行命令生成.ssh 秘钥目录[注意：这里-C 这个参数是大写的 C]
+$ ssh-keygen -t rsa -C [git用户签名邮箱]
+--进入.ssh 目录查看文件列表
+$ cd .ssh
+--有两个文件  id_rsa.pub(公钥) 和 id_rsa(私钥)
+--复制 id_rsa.pub 文件内容，登录 GitHub，点击用户头像→Settings→SSH and GPG keys > new SSH Key
+--接下来push就不需要登录了
